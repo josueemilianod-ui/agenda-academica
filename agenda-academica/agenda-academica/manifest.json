@@ -1,0 +1,1 @@
+{"name":"Agenda académica","short_name":"Agenda","description":"Organiza tareas, exámenes y proyectos por materia","start_url":"./index.html","scope":"./","display":"standalone","background_color":"#0f3b6b","theme_color":"#0f3b6b","lang":"es","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}

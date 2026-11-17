@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f3b6b">
+<title>Agenda académica</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="marca"><img src="icon.svg" alt="" width="34" height="34"><h1>Agenda académica</h1></div>
+  <button id="btn-tema" class="icono" aria-label="Cambiar tema">🌙</button>
+</header>
+<nav class="tabs" id="tabs">
+  <button data-vista="inicio" class="activa">Inicio</button>
+  <button data-vista="actividades">Actividades</button>
+  <button data-vista="materias">Materias</button>
+</nav>
+<main>
+  <section id="vista-inicio" class="vista">
+    <div class="hero"><h2 id="saludo"></h2><p id="resumen"></p>
+      <div class="barra"><span id="barra"></span></div><small id="porcentaje"></small></div>
+    <div class="stats" id="stats"></div>
+    <h3>Próximas entregas</h3><ul class="lista" id="proximas"></ul>
+  </section>
+  <section id="vista-actividades" class="vista" hidden>
+    <div class="filtros">
+      <input type="search" id="busqueda" placeholder="Buscar por título, materia o notas" aria-label="Buscar">
+      <select id="f-estado" aria-label="Estado"><option value="todas">Todas</option><option value="pendientes">Pendientes</option><option value="vencidas">Vencidas</option><option value="hechas">Completadas</option></select>
+      <select id="f-tipo" aria-label="Tipo"><option value="">Todos los tipos</option><option>Tarea</option><option>Examen</option><option>Proyecto</option><option>Exposición</option></select>
+      <select id="f-materia" aria-label="Materia"></select>
+      <select id="orden" aria-label="Orden"><option value="fecha">Por fecha</option><option value="prioridad">Por prioridad</option><option value="materia">Por materia</option></select>
+    </div>
+    <ul class="lista" id="lista"></ul><p class="vacio" id="vacio" hidden></p>
+  </section>
+  <section id="vista-materias" class="vista" hidden><div class="rejilla" id="materias"></div><p class="vacio" id="vacio-mat" hidden>Aún no hay materias. Agrega una actividad para crear la primera.</p></section>
+</main>
+<button id="fab" class="fab" aria-label="Nueva actividad">+</button>
+<dialog id="dialogo"><form id="form" novalidate>
+  <h2 id="titulo-form">Nueva actividad</h2><input type="hidden" id="id">
+  <label for="titulo">Título</label><input id="titulo" maxlength="80"><p class="error" id="e-titulo"></p>
+  <label for="materia">Materia</label><input id="materia" maxlength="40" list="materias-lista"><datalist id="materias-lista"></datalist><p class="error" id="e-materia"></p>
+  <div class="fila">
+    <div><label for="tipo">Tipo</label><select id="tipo"><option>Tarea</option><option>Examen</option><option>Proyecto</option><option>Exposición</option></select></div>
+    <div><label for="prioridad">Prioridad</label><select id="prioridad"><option value="1">Alta</option><option value="2" selected>Media</option><option value="3">Baja</option></select></div>
+  </div>
+  <label for="fecha">Fecha de entrega</label><input type="date" id="fecha"><p class="error" id="e-fecha"></p>
+  <label for="notas">Notas (opcional)</label><textarea id="notas" rows="3" maxlength="200"></textarea>
+  <div class="acciones"><button type="submit" class="primario" id="btn-guardar">Agregar actividad</button><button type="button" class="secundario" id="btn-cancelar">Cancelar</button></div>
+</form></dialog>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
